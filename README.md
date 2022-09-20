@@ -8,3 +8,4 @@
 
 ### Run the api
 1. Run `yarn start` in the base directory
+1. The API is then accessible at `https://localhost:3001/api/`
