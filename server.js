@@ -85,6 +85,20 @@ router.delete('/testCases/:key', (req, res) => {
   });
 });
 
+// replace all existing test cases with a new list (used to update sort ids in bulk)
+router.post('/newTestCaseList', (req, res) => {
+  console.log('time to delete');
+  Data.deleteMany({}, err => {
+    if (err) return res.json({success: false, error: err});
+    else {
+      Data.insertMany(req.body, err => {
+        if (err) return res.json({success: false, error: err});
+        return res.json({ success: true });
+      });
+    } 
+  });
+});
+
 // append /api to http requests
 app.use('/api', router);
 
